@@ -1,4 +1,3 @@
-
 <!doctype html>
 	<head>
 		<style>
@@ -53,24 +52,57 @@
                 position: relative;
                 bottom: 50px;
             }
+            #postForm{
+                color: #424241;
+                text-align: center;
+                margin-top: 100px;
+            }
+            #userInput{
+                background-color: #424241;
+                margin-top: 50px;
+            }
 		</style>
 		<title>JavaScript Speech to Text</title>
 	</head>
 
+
+
 <body>
-<p class="b1"><button type="button" onclick="runSpeechRecognition()" class="b2">Start</button> &nbsp; <span id="action"></span></p>
-<div id="output" class="hide"></div>
-<div id="mytex1t"></div>
-Please tell your instance and resource group name
-<form action="/yourVM" method="get" id="myform">
-    <input type="text" name="OS_name" id="mytext">
-    <input type="submit">
+
+		<h2 id="h1">AZURE Assistant</h2>
+        <p class="b1"><button type="button" onclick="runSpeechRecognition()" class="b2">Start</button> &nbsp; <span id="action"></span></p>
+        <div id="output" class="hide"></div>
+
+<h1>Hello Client</h1>
+<form method="post" id="postForm">
+    <input type="text" id="userInput", name="name">
+    <input type="submit" value="submit">
 </form>
-
-
+<div id ="result"></div>
 <script>
-			/* JS comes here */
-		    function runSpeechRecognition() {
+    document.getElementById('postForm').addEventListener('submit', getData);
+
+    function getData(e){
+        e.preventDefault();
+
+        var name = document.getElementById('userInput').value;
+        var params = {user_input:name}
+        var xhr = new XMLHttpRequest()
+
+        xhr.open('post', '../output', true)
+        xhr.setRequestHeader('Content-type', 'application/json');
+
+        xhr.onload = function(){
+            console.log('Reached');
+            document.getElementById('result').innerHTML = this.responseText;
+        }
+        xhr.send(JSON.stringify(params))
+
+    }
+
+
+
+    function runSpeechRecognition() {
 		        // get output div reference
 		        var output = document.getElementById("output");
 		        // get action element reference
@@ -95,9 +127,7 @@ Please tell your instance and resource group name
                     var confidence = event.results[0][0].confidence;
                     output.innerHTML = "<b>Text:</b> " + transcript + "<br/> <b>Confidence:</b> " + confidence*100+"%";
                     output.classList.remove("hide");
-                    document.getElementById("mytext").value = transcript;
-                    document.getElementById("mytext1").value = transcript;
-                    document.getElementById("myForm").submit();
+                    document.getElementById("userInput").value = transcript;
 
 
                 };
@@ -105,6 +135,6 @@ Please tell your instance and resource group name
                  // start recognition
                  recognition.start();
 	        }
-		</script>
-	</body>
-</html>
+</script>
+
+</body>

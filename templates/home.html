@@ -1,0 +1,26 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+$(function() {
+    window.setInterval(function () {
+        loadviewDecimal()
+    }, 500)
+
+    function loadviewDecimal() {
+        $.ajax({
+            url: "/update_decimal",
+            type: "POST",
+            dataType: "json",
+            success: function (data) {
+                $(random_decimal).replaceWith(data)
+            }
+
+        });
+    }
+});
+
+</script>
+
+<div id="random_decimal">
+{{ x }}
+</div>
