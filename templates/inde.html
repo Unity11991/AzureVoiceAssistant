@@ -3,10 +3,13 @@
 		<style>
 			/* CSS comes here */
 			body {
+                height: 100%;
+                background-image: url({{ url_for ('static', filename = 'background.JPG') }});
 			    font-family: arial;
                 background-color: #424241;
 			}
 			button {
+                display: none;
 			    padding:10px;
 			    background-color:#6a67ce;
 			    color: #FFFFFF;
@@ -15,9 +18,9 @@
 			    border-radius: 5px;
 			}
 			#output {
-			    background-color: #424241;
+                text-align: justify;
 			    padding:10px;
-			    width: 100%;
+			    width: 50%;
 			    margin-top: 20px;
 			    line-height:30px;
 			}
@@ -28,10 +31,10 @@
 			    display:block;
 			}
             #h1{
-                font-size: xxx-large;
-                text-align: center;
+                font-size: x-large;
                 font-family: "Rockwell Extra Bold";
                 color: #FFFFFF;
+                text-shadow: 2px 2px gray;
             }
             #p1{
                 font-size: large;
@@ -42,42 +45,171 @@
             .b1{
                 text-align: center;
                 position: relative;
-                top: 100px;
+                padding-top: 250px;
             }
             .b2{
                 text-align: center;
                 font-size: 50px;
+                border-radius: 25px;
+                height: 200px;
+                width: 200px;
             }
             .b3{
                 position: relative;
                 bottom: 50px;
             }
+            .b{
+                height: 100px;
+                width: 100px;
+            }
             #postForm{
                 color: #424241;
                 text-align: center;
-                margin-top: 100px;
+                height: 200px;
+                padding-top: 75px;
             }
             #userInput{
-                background-color: #424241;
-                margin-top: 50px;
+                font-size: x-large;
+                background-color: #7f8c8d;
+                margin-top: 25px;
+                margin-left: 50px;
             }
+
+
+            * {
+  margin:0;
+  padding:0;
+  font-family: 'Carme', sans-serif;
+}
+
+.container {
+    padding: 10px;
+  width:150px;
+    height: 150px;
+  background-color:#e74c3c;
+  margin:100px auto 0px auto;
+  border-radius:100%;
+  box-shadow:0px 0px 15px 2px #bdc3c7;
+  cursor:pointer;
+  transition:.3s all ease-in;
+  position:relative;
+}
+
+.icon-microphone {
+  color:white;
+  font-size:60px;
+  line-height:150px;
+  display:block;
+  text-align:center;
+  transition:.1s all ease-in;
+}
+
+.outer {
+  width:148px;
+  height:148px;
+  -webkit-transform:scale(1);
+  border-radius:100%;
+  position:absolute;
+  background-color:transparent;
+  border:1px solid #7f8c8d;
+  z-index:-1;
+  transition:1s all ease;
+  -webkit-animation: woong 1s infinite;
+}
+
+.outer-2 {
+  width:150px;
+  height:150px;
+  -webkit-transform:scale(1);
+  border-radius:100%;
+  position:absolute;
+  background-color:#bdc3c7;
+  z-index:-1;
+  transition:1s all ease;
+  -webkit-animation: woong-2 1s infinite;
+   -webkit-animation-delay:2s;
+}
+
+@-webkit-keyframes woong {
+  0% { -webkit-trasform:scale(1.2); }
+  50% { -webkit-transform:scale(1.8);
+      opacity:0.5;
+  }
+  100% { -webkit-transform:scale(2.4);
+    opacity:0; }
+}
+
+@-webkit-keyframes woong-2 {
+  0% { -webkit-transform:scale(1.2);
+      opacity:0.6; }
+  50% { -webkit-transform:scale(1.6);
+      opacity:0.5;
+  }
+  100% { -webkit-transform:scale(2);
+    opacity:0; }
+}
+
+/*
+.container:hover .outer {
+  -webkit-transform:scale(2.3);
+  opacity:0;
+}
+*/
+.container:hover {
+  background-color:#27ae60;
+}
+
+.container:active {
+  background-color:#e74c3c;
+}
+
+.container:active .icon-microphone {
+  color:#ecf0f1;
+}
+
+.container:after {
+  position:absolute;
+  left:-65px;
+  top:0;
+  margin-top:63px;
+  color:#7f8c8d;
+  content:"Click";
+}
+
+.container:before {
+  position:absolute;
+  left:180px;
+  top:0;
+  margin-top:63px;
+  color:#7f8c8d;
+  content:"Speak!";
+}
+
+
 		</style>
-		<title>JavaScript Speech to Text</title>
+		<title>Azure Voice Assistant</title>
 	</head>
 
 
 
 <body>
-
+        <small>Beta Version</small>
 		<h2 id="h1">AZURE Assistant</h2>
-        <p class="b1"><button type="button" onclick="runSpeechRecognition()" class="b2">Start</button> &nbsp; <span id="action"></span></p>
+
+        <div class="container" onclick="runSpeechRecognition()">
+            <div class="outer" onclick="runSpeechRecognition()"></div>
+            <button type="button" onclick="runSpeechRecognition()" class="b">Start</button>
+            <div class="outer-2" onclick="runSpeechRecognition()"></div>
+            <i class="icon-microphone"></i>
+        </div>
+        <p class="b1"><span id="action"></span></p>
         <div id="output" class="hide"></div>
 
-<h1>Hello Client</h1>
 <form method="post" id="postForm">
     <input type="text" id="userInput", name="name">
     <input type="submit" value="submit">
 </form>
+
 <div id ="result"></div>
 <script>
     document.getElementById('postForm').addEventListener('submit', getData);
@@ -125,7 +257,7 @@
                 recognition.onresult = function(event) {
                     var transcript = event.results[0][0].transcript;
                     var confidence = event.results[0][0].confidence;
-                    output.innerHTML = "<b>Text:</b> " + transcript + "<br/> <b>Confidence:</b> " + confidence*100+"%";
+                    output.innerHTML = "<b>Your Command:</b> " + transcript + "<br/> <b>Confidence:</b> " + confidence*100+"%";
                     output.classList.remove("hide");
                     document.getElementById("userInput").value = transcript;
 
