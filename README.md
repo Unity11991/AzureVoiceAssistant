@@ -15,3 +15,12 @@ Automation voice assistant that will be in Microsoft Azure and that voice assist
 
 ##Program output in Azure Console
 ![Test Image 7](https://github.com/Unity11991/AzureVoiceAssistant/blob/main/ProgrammSS/Screenshot%20(1297).png)
+
+##Creating A VM instance inside this Resource group by giving voice command
+![Test Image 7](https://github.com/Unity11991/AzureVoiceAssistant/blob/main/ProgrammSS/Virtual%20Machine%20Voice%20command.png)
+
+##Program Output
+![Test Image 7](https://github.com/Unity11991/AzureVoiceAssistant/blob/main/ProgrammSS/Output.png)
+
+##Program output in Azure Console
+![Test Image 7](https://github.com/Unity11991/AzureVoiceAssistant/blob/main/ProgrammSS/Console%20Output.png)
