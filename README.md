@@ -1,5 +1,5 @@
 # AzureVoiceAssistant
-Azure assistant Voice Project
+Azure Voice assistant Project
 
 ##MAIN-PAGE 
 ![Test Image 7](https://github.com/Unity11991/AzureVoiceAssistant/blob/main/ProgrammSS/Screenshot%20(1292).png)
