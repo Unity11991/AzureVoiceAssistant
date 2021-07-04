@@ -2,10 +2,8 @@
 # Usage: pip install -r requirements.txt
 
 # Flask Framework
-Flask==1.0.2
+Flask==1.1.2
 
 # Azure CLI
-azure-cli==2.0.22
-azure-cli-ml==0.1.0a27.post3
-azure-cli-vm==2.0.18
-
+azure-cli==2.19.1
+azure-cli-ml==2.0.1a2.post3
