@@ -20,7 +20,7 @@ jobs:
     - name: Set up Python version
       uses: actions/setup-python@v1
       with:
-        python-version: '3.8'
+        python-version: '3.7'
 
     - name: Create and start virtual environment
       run: |
@@ -59,4 +59,4 @@ jobs:
         with:
           app-name: 'AzureVoiceAssistant'
           slot-name: 'production'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_bc8cf9014b5e4d5e8b7e4d45b3743071 }}
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_5a0dea9e7ced41e98acddc4f882dbfbe }}
