@@ -4,6 +4,3 @@
 # Flask Framework
 Flask==1.1.2
 
-# Azure CLI
-azure-cli==2.19.1
-azure-cli-ml==2.0.1a2.post3
