@@ -7,5 +7,5 @@
 Flask==1.0.2
 
 # Azure CLI
-azure-cli==2.0.23.txt
+azure-cli==2.0.23
 
