@@ -1,6 +1,6 @@
 # This file is used by pip to install required python packages
 # Usage: pip install -r requirements.txt
-pip install -r https://gist.githubusercontent.com/derekbekoe/4e60d38f6243ab60cff41ad269cbf0ba/raw/aa7caf587892cc08d6ca3cb7cb85f7dc4b798cfa/azure-cli-2.0.23.txt
+# Usage: pip install -r https://gist.githubusercontent.com/derekbekoe/4e60d38f6243ab60cff41ad269cbf0ba/raw/aa7caf587892cc08d6ca3cb7cb85f7dc4b798cfa/azure-cli-2.0.23.txt
 
 
 # Flask Framework
