@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request,redirect, url_for, jsonify
 import subprocess
-import numpy as np
 app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def ajax():
@@ -28,7 +27,6 @@ def output():
 
 
 
-random_decimal = np.random.rand()
 
 @app.route('/update_decimal', methods=['POST'])
 def updatedecimal():
