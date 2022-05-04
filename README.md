@@ -6,9 +6,6 @@ Automation voice assistant that will be in Microsoft Azure and that voice assist
 ## AZUREVOICEAssistant
 ![Test Image 7](https://github.com/Unity11991/AzureVoiceAssistant/blob/main/ProgrammSS/Az_Idea.jpg)
 
-## MAIN-PAGE 
-![Test Image 7](https://github.com/Unity11991/AzureVoiceAssistant/blob/main/ProgrammSS/Screenshot%20(1292).png)
-
 
 ## Creating Resource group by giving voice command
 ![Test Image 7](https://github.com/Unity11991/AzureVoiceAssistant/blob/main/ProgrammSS/Screenshot%20(1295).png)
